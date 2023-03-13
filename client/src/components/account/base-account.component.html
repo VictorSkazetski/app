@@ -1,0 +1,29 @@
+<!-- <kendo-dialog [minWidth]="250" [width]="450" (close)="close()">
+  <kendo-dialog-titlebar>
+    <a href="">Домой</a>
+  </kendo-dialog-titlebar>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" #pform="ngForm">
+    <label for="uemail"><b>e-mail</b></label>
+    <input name="uemail" formControlName="UserEmail" />
+    <div *ngIf="profileForm['UserEmail'].errors?.['email']">
+      некорректный e-mail
+    </div>
+    <div *ngIf="submitted && profileForm['UserEmail'].errors?.['required']">
+      укажите e-mail
+    </div>
+    <br />
+    <label for="upassword"><b>пароль</b></label>
+    <input name="upassword" formControlName="UserPassword" />
+    <div *ngIf="profileForm['UserPassword'].errors?.['minlength']">
+      некорректный пароль
+    </div>
+    <div *ngIf="submitted && profileForm['UserPassword'].errors?.['required']">
+      укажите пароль
+    </div>
+    <br />
+    <div>
+      <button>{{ buttonLabel }}</button>
+    </div>
+  </form>
+  <ng-container [ngTemplateOutlet]="template"></ng-container>
+</kendo-dialog> -->

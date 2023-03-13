@@ -7,7 +7,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.14">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="7.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\api.Domain\api.Domain.csproj" />
+    <ProjectReference Include="..\api.Exception\api.Error.csproj" />
+    <ProjectReference Include="..\api.Infrastructure.Data\api.Infrastructure.Data.csproj" />
+    <ProjectReference Include="..\api.infrastructure\api.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,63 @@
+<div *ngIf="isRegistrationStep; then registration; else confirmEmail"></div>
+
+<ng-template #registration>
+  <section class="container">
+    <div>
+      <h1>Регистрация</h1>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()" #pform="ngForm">
+        <input
+          name="uemail"
+          placeholder="Ваш e-mail"
+          formControlName="UserEmail"
+        />
+        <div *ngIf="formControls['UserEmail'].errors?.['email']">
+          Некорректный e-mail
+        </div>
+        <div
+          *ngIf="submitted && formControls['UserEmail'].errors?.['required']"
+        >
+          Укажите e-mail
+        </div>
+        <br />
+        <input
+          name="upassword"
+          placeholder="Придумайте пароль"
+          formControlName="UserPassword"
+        />
+        <div *ngIf="formControls['UserPassword'].errors?.['minlength']">
+          Некорректный пароль
+        </div>
+        <div
+          *ngIf="submitted && formControls['UserPassword'].errors?.['required']"
+        >
+          Укажите пароль
+        </div>
+        <br />
+        <input
+          name="upasswordConfirm"
+          placeholder="Повторите пароль"
+          formControlName="UserConfirmPassword"
+        />
+        <div
+          *ngIf="submitted && formControls['UserConfirmPassword'].errors?.['required']"
+        >
+          Укажите пароль
+        </div>
+        <div
+          *ngIf="formControls['UserConfirmPassword'].errors?.['matchPassword']"
+        >
+          Пароли не совпадают
+        </div>
+        <br />
+        <div>
+          <button>Зарегистрироваться</button>
+        </div>
+      </form>
+      <a href="/account/login">Войти</a>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #confirmEmail>
+  <email-confirm [emailUrl]="emailUrl"></email-confirm>
+</ng-template>

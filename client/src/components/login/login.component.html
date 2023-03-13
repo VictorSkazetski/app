@@ -1,0 +1,19 @@
+<section class="container">
+  <div>
+    <h1>Вход</h1>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" #pform="ngForm">
+      <input name="uemail" placeholder="E-mail" formControlName="UserEmail" />
+      <br />
+      <input
+        name="upassword"
+        placeholder="Пароль"
+        formControlName="UserPassword"
+      />
+      <br />
+      <div>
+        <button>Войти</button>
+      </div>
+    </form>
+    <a href="/account/registration">Зарегистрироваться</a>
+  </div>
+</section>
