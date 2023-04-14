@@ -1,0 +1,11 @@
+<label class="uploader">
+  <img [src]="imageSrc" [class.loaded]="loaded" />
+  <input
+    type="file"
+    name="file"
+    accept="image/*"
+    (change)="onFileChange($event)"
+  />
+</label>
+<br />
+<button *ngIf="imageSrc" (click)="delete()">Удалить</button>

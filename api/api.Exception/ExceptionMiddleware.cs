@@ -22,6 +22,14 @@ namespace api.Error
             {
                 await CreateResponse(context, exception);
             }
+            catch (UnauthorizedException exception)
+            {
+                await CreateResponse(context, exception);
+            }
+            catch (BadRequestException exception)
+            {
+                await CreateResponse(context, exception);
+            }
         }
 
         private bool IsResponseStarte(HttpResponse response)
@@ -32,7 +40,7 @@ namespace api.Error
             return new CustomHttpErrorResponse
             {
                 Message = exception.Message,
-                Status = (int)exception.Status
+                Status = (int)exception.Status,
             };
         }
 

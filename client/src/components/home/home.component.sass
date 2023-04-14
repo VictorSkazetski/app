@@ -1,0 +1,54 @@
+.home-container
+ display: flex
+ align-items: center
+ justify-content: center
+ flex-direction: column
+ gap: 50px
+
+.bike 
+ height: 300px
+ position: relative
+ width: 500px
+
+.frame 
+ position: absolute
+ width: 500px
+ z-index: 1
+ top: 10px
+ left: 3px
+
+
+.whell1, .whell2 
+ position: absolute
+ width: 200px
+ animation-name: run
+ animation-duration: 1s
+ animation-iteration-count: infinite
+ animation-timing-function: linear
+
+
+.whell1 
+ top: 90px
+
+
+.whell2 
+ top: 90px
+ left: 305px
+
+
+.system 
+ position: absolute
+ width: 105px
+ top: 182px
+ left: 177px
+ animation-name: run
+ animation-duration: 2s
+ animation-iteration-count: infinite
+ animation-timing-function: linear
+
+
+
+@keyframes run 
+  100% 
+    transform: rotate(360deg)
+  

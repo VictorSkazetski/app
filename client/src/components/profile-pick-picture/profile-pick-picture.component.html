@@ -1,0 +1,73 @@
+<div class="pick_avatar_container">
+  <div class="pick_avatar_container__button_container">
+    <button type="button" #prevButton id="slide-arrow-prev">&#8249;</button>
+    <button type="button" #nextButton id="slide-arrow-next">&#8250;</button>
+  </div>
+  <div [formGroup]="form" class="pick_avatar_container__slide_wrapper">
+    <ul
+      #slideContainer
+      class="pick_avatar_container__slide_wrapper__slide_container"
+      id="pick_avatar_container__slide_wrapper__slide_container"
+    >
+      <li
+        class="pick_avatar_container__slide_wrapper__slide_container__items_container"
+      >
+        <div
+          *ngFor="
+            let imgKey of Object.keys(profilePickPicture.imgs).slice(
+              0,
+              profilePickPicture.displayImgOnContainer
+            )
+          "
+        >
+          <div
+            class="pick_avatar_container__slide_wrapper__slide_container__items_container_item"
+            [ngStyle]="{
+              'background-image':
+                'url(' + profilePickPicture.getImgPathByKey(+imgKey) + ')'
+            }"
+          >
+            <input
+              [attr.id]="+imgKey"
+              type="radio"
+              formControlName="pickImg"
+              [value]="+imgKey"
+            />
+            <label [attr.for]="+imgKey" class="clickable"></label>
+          </div>
+        </div>
+      </li>
+      <li
+        class="pick_avatar_container__slide_wrapper__slide_container__items_container"
+      >
+        <div
+          *ngFor="
+            let imgKey of Object.keys(profilePickPicture.imgs).slice(
+              profilePickPicture.displayImgOnContainer,
+              Object.keys(profilePickPicture.imgs).length
+            )
+          "
+        >
+          <div
+            class="pick_avatar_container__slide_wrapper__slide_container__items_container_item"
+            [ngStyle]="{
+              'background-image':
+                'url(' + profilePickPicture.getImgPathByKey(+imgKey) + ')'
+            }"
+          >
+            <input
+              [attr.id]="+imgKey + profilePickPicture.displayImgOnContainer"
+              type="radio"
+              formControlName="pickImg"
+              [value]="+imgKey + profilePickPicture.displayImgOnContainer"
+            />
+            <label
+              [attr.for]="+imgKey + profilePickPicture.displayImgOnContainer"
+              class="clickable"
+            ></label>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

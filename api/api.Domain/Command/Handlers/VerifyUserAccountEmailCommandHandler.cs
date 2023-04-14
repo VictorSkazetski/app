@@ -14,8 +14,7 @@ namespace api.Domain.Command.Handlers
 
         public VerifyUserAccountEmailCommandHandler(
             IApiUserManagerServices userManager,
-            IMapper mapper
-            )
+            IMapper mapper)
         {
             this.userManager = userManager;
             this.mapper = mapper;

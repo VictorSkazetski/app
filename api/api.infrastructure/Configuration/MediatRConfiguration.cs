@@ -11,6 +11,7 @@ namespace api.Infrastructure.Configuration
             services.AddMediatR(cfg => 
                 cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
             services.AddMediatRCommands();
+            services.AddMediatRQueries();
 
             return services;
         }

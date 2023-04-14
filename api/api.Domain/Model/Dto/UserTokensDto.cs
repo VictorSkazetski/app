@@ -1,6 +1,6 @@
-﻿namespace api.Domain.Model.Poco
+﻿namespace api.Domain.Model.Dto
 {
-    public class Tokens
+    public class UserTokensDto
     {
         public string AccessToken { get; set; }
         public string RefreshToken { get; set; }

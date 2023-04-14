@@ -19,4 +19,8 @@
     <ProjectReference Include="..\api.Infrastructure.Data\api.Infrastructure.Data.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
 </Project>

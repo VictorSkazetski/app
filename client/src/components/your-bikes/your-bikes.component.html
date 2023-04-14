@@ -1,0 +1,17 @@
+<h1>Ваши велосипеды</h1>
+<div class="your-bike">
+  <div *ngFor="let item of yourBikes" class="your-bike__items-container">
+    <div>
+      <p>Бренд</p>
+      <h2>{{ item.brand }}</h2>
+    </div>
+    <div>
+      <p>Тип</p>
+      <h2>{{ item.type }}</h2>
+    </div>
+    <div>
+      <img class="bike-img" [src]="item.uploadImgPath" />
+    </div>
+    <button (click)="deleteBike(item.id)">Удалить</button>
+  </div>
+</div>

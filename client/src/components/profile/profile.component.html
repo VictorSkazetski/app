@@ -1,0 +1,32 @@
+<a href="/" class="k-button">vb.by</a>
+<h1>Настройка профиля - заголовки</h1>
+<div class="profile-container">
+  <div class="profile-menu-container">
+    <div class="profile-menu-container__avatar">
+      <img
+        class="avatar"
+        [src]="
+          userAvatar ? userAvatar : './assets/img/avatar-icon/no-avatar.svg'
+        "
+      />
+    </div>
+    <div class="profile-menu-container__link">
+      <ul>
+        <li>
+          <a [routerLink]="['profile-settings']" routerLinkActive="active"
+            >Настройки</a
+          >
+        </li>
+        <li>
+          <a [routerLink]="['/profile/your-bikes']" routerLinkActive="active"
+            >Твои велосипеды</a
+          >
+        </li>
+        <li>
+          <button (click)="logout()">Выход</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</div>

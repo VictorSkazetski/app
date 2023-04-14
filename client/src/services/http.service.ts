@@ -19,20 +19,72 @@ export class HttpService {
     private appToastrService: AppToastrService
   ) {}
 
-  post<T>(path: string, data: T): Observable<T> {
-    return this.httpClient
-      .post<T>(this.host + path, data, this.httpOptions)
-      .pipe(
-        tap(() => this.showSuccessMessage('Успешно')),
-        catchError((err) => this.handleServerError(err))
-      );
+  post<T>(
+    path: string,
+    data?: T,
+    isUserEvent: boolean = true,
+  ): Observable<any> {
+    return this.httpClient.post<T>(this.host + path, data, this.httpOptions).pipe(
+      tap(() => {
+        if (isUserEvent) {
+          this.showSuccessMessage('Успешно');
+        }
+      }),
+      catchError((error) => this.handleServerError(error))
+    );
   }
 
-  // get<T>(path: string): Observable<T> {
-  //   return this.httpClient
-  //     .get<T>(this.host + path)
-  //     .pipe();
-  // }
+  postFormData<T>(
+    path: string,
+    data?: T,
+    isUserEvent: boolean = true,
+  ): Observable<any> {
+    return this.httpClient.post<T>(this.host + path, data).pipe(
+      tap(() => {
+        if (isUserEvent) {
+          this.showSuccessMessage('Успешно');
+        }
+      }),
+      catchError((error) => this.handleServerError(error))
+    );
+  }
+
+  get<T>(path: string, isUserEvent: boolean = true): Observable<T> {
+    return this.httpClient.get<T>(this.host + path).pipe(
+      tap(() => {
+        if (isUserEvent) {
+          this.showSuccessMessage('Успешно');
+        }
+      }),
+      catchError((error) => this.handleServerError(error))
+    );
+  }
+
+  put<T>(path: string, data?: T, isUserEvent: boolean = true): Observable<any> {
+    return this.httpClient.put<T>(this.host + path, data).pipe(
+      tap(() => {
+        if (isUserEvent) {
+          this.showSuccessMessage('Успешно');
+        }
+      }),
+      catchError((error) => this.handleServerError(error))
+    );
+  }
+
+  delete<T>(path: string, isUserEvent: boolean = true): Observable<any> {
+    return this.httpClient.delete(this.host + path,).pipe(
+      tap(() => {
+        if (isUserEvent) {
+          this.showSuccessMessage('Успешно');
+        }
+      }),
+      catchError((error) => this.handleServerError(error))
+    );
+  }
+
+  getImgFromAssets(path: string) {
+    return this.httpClient.get(path, { responseType: 'blob' });
+  }
 
   private showSuccessMessage(message: string) {
     this.appToastrService.showSuccess(message);
@@ -45,7 +97,7 @@ export class HttpService {
         'An error occurred: ' + error.error.message
       );
 
-      return of(null);
+      // return of(null);
     }
 
     if (error.status === HttpCodes.Conflict) {
@@ -53,7 +105,15 @@ export class HttpService {
         (error.error as CustomHttpErrorResponse).Message
       );
 
-      return of(null);
+      // return of(null);
+    }
+
+    if (error.status === HttpCodes.Unauthorized) {
+      this.appToastrService.showError(
+        (error.error as CustomHttpErrorResponse).Message
+      );
+
+      // return of(null);
     }
 
     if (error.status === HttpCodes.BadRequest) {
@@ -61,7 +121,7 @@ export class HttpService {
         (error.error as CustomHttpErrorResponse).Message
       );
 
-      return of(null);
+      // return of(null);
     }
 
     return throwError(() => error);

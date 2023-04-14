@@ -1,0 +1,36 @@
+<div *ngIf="form" class="profile-settings-container">
+  <div class="profile-settings-container__info">
+    <h2>Выберите фото</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <div class="profile-settings-container__info__photo">
+        <upload-picture
+          [form]="form"
+          [userUploadImg]="userUploadImg"
+        ></upload-picture>
+        <profile-pick-picture [form]="form"></profile-pick-picture>
+      </div>
+      <h2>Детали профиля</h2>
+      <div class="profile-settings-container__info__details">
+        <div>
+          <input
+            formControlName="birthDay"
+            [max]="maxDob"
+            [matDatepicker]="picker"
+            placeholder="Дата рождения"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            [for]="picker"
+          ></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </div>
+        <div>
+          <input placeholder="Телефон" formControlName="phone" />
+        </div>
+      </div>
+      <div>
+        <button>Отправить</button>
+      </div>
+    </form>
+  </div>
+</div>

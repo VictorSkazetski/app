@@ -5,15 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.sass'],
 })
-export class HomeComponent {
-  opened = false;
-
-  open(): void {
-    this.opened = true;
-  }
-
-  close(status: string): void {
-    console.log(`Dialog result: ${status}`);
-    this.opened = false;
-  }
-}
+export class HomeComponent {}

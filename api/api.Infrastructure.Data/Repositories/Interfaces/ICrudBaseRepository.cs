@@ -1,6 +1,6 @@
 ﻿namespace api.Infrastructure.Data.Repositories.Interfaces
 {
-    public interface ICrudBaseRepository<T>
+    public interface ICrudBaseRepository<T, Tid>
         where T : class
     {
         IQueryable<T> Query();
@@ -9,5 +9,10 @@
 
         Task<T> CreateAsync(T entity);
 
+        Task<T> GetAsync(Tid id);
+
+        Task DeleteAsync(T entity);
+
+        Task<T> UpdateAsync(T entity);
     }
 }

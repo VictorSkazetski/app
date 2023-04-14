@@ -1,0 +1,46 @@
+<a href="/" class="k-button">vb.by</a>
+<h1>велосипеды</h1>
+<mat-form-field appearance="fill" *ngFor="let bikeFilter of allBikeAdsFilters">
+  <mat-label>{{ bikeFilter.name }}</mat-label>
+  <mat-select
+    [(value)]="bikeFilter.defaultValue"
+    (selectionChange)="applyBikeFilter($event, bikeFilter)"
+  >
+    <mat-option *ngFor="let op of bikeFilter.options" [value]="op">
+      {{ op }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<div class="bike-ads-container"></div>
+<table mat-table [dataSource]="dataSourceFilters">
+  <ng-container matColumnDef="brand">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Бренд</th>
+    <td mat-cell *matCellDef="let entry">{{ entry.brand }}</td>
+  </ng-container>
+  <ng-container matColumnDef="type">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Тип</th>
+    <td mat-cell *matCellDef="let entry">{{ entry.type }}</td>
+  </ng-container>
+  <ng-container matColumnDef="frameSize">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Размер рамы</th>
+    <td mat-cell *matCellDef="let entry">{{ entry.frameSize }}</td>
+  </ng-container>
+  <ng-container matColumnDef="gender">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Пол</th>
+    <td mat-cell *matCellDef="let entry">{{ entry.gender }}</td>
+  </ng-container>
+  <ng-container matColumnDef="uploadImgPath" class="bike-img">
+    <th mat-header-cell *matHeaderCellDef>Фото</th>
+    <td mat-cell *matCellDef="let element">
+      <img [src]="element.uploadImgPath" />
+    </td>
+  </ng-container>
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+    <td mat-cell *matCellDef="let entry">
+      <a [routerLink]="['bike', entry.id]" class="k-button">Подробнее</a>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsToDisplay"></tr>
+</table>

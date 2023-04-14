@@ -1,0 +1,142 @@
+<a href="/" class="k-button">vb.by</a>
+<h1>Расскажите о своем велосипеде</h1>
+<div calss="bike-sell-container">
+  <form *ngIf="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <h2>Бренд</h2>
+    <div>
+      <select id="bikes" formControlName="bikeBrand">
+        <option value="Aist">Aist</option>
+        <option value="Cube">Cube</option>
+        <option value="Fuji">Fuji</option>
+        <option value="Trek">Trek</option>
+      </select>
+      <div
+        class="invalid-form"
+        *ngIf="isFormSubmitted && formControls['bikeBrand'].errors?.['required']"
+      >
+        <sup>*</sup>Пожалуйста заполните поле
+      </div>
+    </div>
+    <h2>Тип велосипеда</h2>
+    <div class="bike-type-container">
+      <div
+        *ngFor="
+          let imgKey of Object.keys(bikePickPicture.imgs).slice(
+            0,
+            bikePickPicture.displayImgOnContainer
+          )
+        "
+        class="bike-type-container__items"
+        [ngStyle]="{
+          'background-image':
+            'url(' + bikePickPicture.getImgPathByKey(imgKey) + ')',
+          'background-size': 'auto',
+          'background-repeat': 'no-repeat'
+        }"
+      >
+        <p>{{ imgKey }}</p>
+        <input
+          [attr.id]="imgKey"
+          type="radio"
+          [value]="imgKey"
+          formControlName="bikeType"
+        />
+        <label [attr.for]="imgKey" class="clickable"></label>
+      </div>
+    </div>
+    <div
+      class="invalid-form"
+      *ngIf="isFormSubmitted && formControls['bikeType'].errors?.['required']"
+    >
+      <sup>*</sup>Пожалуйста заполните поле
+    </div>
+    <h2>Размер рамы</h2>
+    <div>
+      <ngx-slider
+        (userChangeEnd)="userChangeSlider()"
+        formControlName="bikeFrameSize"
+        [(value)]="value"
+        [options]="options"
+      ></ngx-slider>
+      <div
+        class="invalid-form"
+        *ngIf="isFormSubmitted && formControls['bikeFrameSize'].errors?.['notSelected']"
+      >
+        <sup>*</sup>Пожалуйста заполните поле
+      </div>
+    </div>
+    <h2>Пол</h2>
+    <div class="gender-container">
+      <div class="gender-container__item">
+        <input
+          id="m"
+          formControlName="gender"
+          name="gender"
+          type="radio"
+          value="Мужской"
+        />
+        <label class="clickable" for="m">Мужской</label>
+      </div>
+      <div class="gender-container__item">
+        <input formControlName="gender" id="w" type="radio" value="Женский" />
+        <label class="clickable" for="w">Женский</label>
+      </div>
+      <div class="gender-container__item">
+        <input formControlName="gender" id="u" type="radio" value="Унисекс" />
+        <label class="clickable" for="u">Унисекс</label>
+      </div>
+    </div>
+    <div
+      class="invalid-form"
+      *ngIf="isFormSubmitted && formControls['gender'].errors?.['required']"
+    >
+      <sup>*</sup>Пожалуйста заполните поле
+    </div>
+    <h2>Описание</h2>
+    <div>
+      <textarea
+        cols="64"
+        rows="10"
+        class="tesxt-area"
+        formControlName="description"
+      ></textarea>
+      <div
+        class="invalid-form"
+        *ngIf="isFormSubmitted && formControls['description'].errors?.['required']"
+      >
+        <sup>*</sup>Пожалуйста заполните поле
+      </div>
+    </div>
+    <h2>Стоимость</h2>
+    <input formControlName="price" type="text" />
+    <div
+      class="invalid-form"
+      *ngIf="isFormSubmitted && formControls['price'].errors?.['required']"
+    >
+      <sup>*</sup>Пожалуйста заполните поле
+    </div>
+    <div
+      class="invalid-form"
+      *ngIf="isFormSubmitted && formControls['price'].errors?.['pattern']"
+    >
+      <sup>*</sup>В поле должны содержаться только цифры
+    </div>
+    <div
+      class="invalid-form"
+      *ngIf="isFormSubmitted && formControls['price'].errors?.['maxlength']"
+    >
+      <sup>*</sup>Максимальная длинна 10
+    </div>
+    <h2>Загрузите фото</h2>
+    <div class="upload-photo-container">
+      <upload-picture [form]="form"></upload-picture>
+      <div
+        class="invalid-form"
+        *ngIf="isFormSubmitted && !formControls['isUploadImg'].value"
+      >
+        <sup>*</sup>Пожалуйста заполните поле
+      </div>
+    </div>
+    <button>Разместить</button>
+  </form>
+</div>

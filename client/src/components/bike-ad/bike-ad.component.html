@@ -1,0 +1,54 @@
+<a href="/" class="k-button">vb.by</a>
+<div *ngIf="bikeAdEnity">
+  <div class="container my-5">
+    <div class="card details-card p-0">
+      <div class="row">
+        <div class="col-md-6 col-sm-12">
+          <img
+            class="img-fluid details-img"
+            [src]="bikeAdEnity.uploadImgPath"
+            alt=""
+          />
+        </div>
+        <div class="col-md-6 col-sm-12 description-container p-5">
+          <div class="main-description">
+            <p class="product-category mb-0">Велосипед</p>
+            <h3>{{ bikeAdEnity.brand }}</h3>
+            <hr />
+            <p class="product-price">{{ bikeAdEnity.price }} BYN</p>
+            <div style="clear: both"></div>
+            <hr />
+            <p class="product-title mt-4 mb-1">Тип</p>
+            <p class="product-description mb-4">
+              {{ bikeAdEnity.type }}
+            </p>
+            <p class="product-title mt-4 mb-1">Размер рамы</p>
+            <p class="product-description mb-4">
+              {{ bikeAdEnity.frameSize }}
+            </p>
+            <p class="product-title mt-4 mb-1">Пол</p>
+            <p class="product-description mb-4">
+              {{ bikeAdEnity.gender }}
+            </p>
+            <p class="product-title mt-4 mb-1">Описание</p>
+            <p class="product-description mb-4">
+              {{ bikeAdEnity.description }}
+            </p>
+            <h2>Продавец</h2>
+            <div class="user-avatar">
+              <img
+                class="avatar"
+                [src]="
+                  userAvatar
+                    ? userAvatar
+                    : './assets/img/avatar-icon/no-avatar.svg'
+                "
+              />
+            </div>
+            <h3>Номер телефона -- {{ bikeAdEnity.phone }}</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

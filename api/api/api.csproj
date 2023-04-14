@@ -23,4 +23,9 @@
     <ProjectReference Include="..\api.infrastructure\api.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\upload\avatar\" />
+    <Folder Include="wwwroot\images\upload\bikes\" />
+  </ItemGroup>
+
 </Project>

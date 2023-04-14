@@ -3,6 +3,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { combineLatest } from 'rxjs';
 import { AccountService } from 'src/services/account.service';
+import { LocalStorageService } from 'src/services/localStorage.service';
+import {
+  RegexConstants,
+  RegexPasswordCapitalLetterValidator,
+  RegexPasswordLeastNumberValidator,
+  RegexPasswordLowerLetterValidator,
+  RegexPasswordOneSymbolValidator,
+} from 'src/validators/regex.validator';
 import { BaseAccountComponent } from '../account/base-account.component';
 
 @Component({
@@ -11,8 +19,13 @@ import { BaseAccountComponent } from '../account/base-account.component';
   styleUrls: ['./registration.component.sass'],
 })
 export class RegistrationComponent extends BaseAccountComponent {
-  constructor(account: AccountService, route: ActivatedRoute, router: Router) {
-    super(account, route, router);
+  constructor(
+    account: AccountService,
+    route: ActivatedRoute,
+    router: Router,
+    localStorage: LocalStorageService
+  ) {
+    super(account, route, router, localStorage);
   }
 
   ngOnInit() {
@@ -29,6 +42,13 @@ export class RegistrationComponent extends BaseAccountComponent {
       UserPassword: new FormControl(null, [
         Validators.required,
         Validators.minLength(6),
+        RegexPasswordCapitalLetterValidator(RegexConstants.OneCapitalLetter),
+        RegexPasswordLowerLetterValidator(RegexConstants.OneLowerLetter),
+        RegexPasswordLeastNumberValidator(RegexConstants.OneNumberLetter),
+        RegexPasswordOneSymbolValidator(
+          RegexConstants.OneNonNumberLetterSymbol
+        ),
+        ,
       ]),
       UserConfirmPassword: new FormControl(null, [Validators.required]),
     });

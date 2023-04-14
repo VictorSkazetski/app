@@ -1,5 +1,5 @@
-﻿using api.Domain.Interfaces;
-using api.Domain.Model.Poco;
+﻿using api.Domain.Command;
+using api.Domain.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -13,51 +13,45 @@ namespace api.Domain.Services
     {
         private readonly IConfiguration iconfiguration;
 
-        public JWTManagerServices(IConfiguration iconfiguration)
+        public JWTManagerServices(
+            IConfiguration iconfiguration)
         {
             this.iconfiguration = iconfiguration;
         }
 
-        public Tokens GenerateRefreshToken(string userEmail)
+        public UserTokensData GenerateRefreshToken(string userEmail)
         {
             return GenerateJWTTokens(userEmail);
         }
 
-        public Tokens GenerateToken(string userEmail)
+        public UserTokensData GenerateToken(string userEmail)
         {
             return GenerateJWTTokens(userEmail);
         }
 
-        public Tokens GenerateJWTTokens(string userName)
+        public UserTokensData GenerateJWTTokens(string userEmail)
         {
-            try
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var tokenKey = Encoding.UTF8.GetBytes(iconfiguration["JWT:Key"]);
+            var tokenDescriptor = new SecurityTokenDescriptor
             {
-                var tokenHandler = new JwtSecurityTokenHandler();
-                var tokenKey = Encoding.UTF8.GetBytes(iconfiguration["JWT:Key"]);
-                var tokenDescriptor = new SecurityTokenDescriptor
+                Subject = new ClaimsIdentity(new Claim[] 
                 {
-                    Subject = new ClaimsIdentity(new Claim[] 
-                        {
-                            new Claim(ClaimTypes.Name, userName)
-                        }),
-                    Expires = DateTime.Now.AddMinutes(1),
-                    SigningCredentials = new SigningCredentials(
-                        new SymmetricSecurityKey(tokenKey), 
-                        SecurityAlgorithms.HmacSha256Signature)
-                };
-                var token = tokenHandler.CreateToken(tokenDescriptor);
-                var refreshToken = GenerateRefreshToken();
+                    new Claim(ClaimTypes.Email, userEmail)
+                }),
+                Expires = DateTime.Now.AddMinutes(2),
+                SigningCredentials = new SigningCredentials(
+                    new SymmetricSecurityKey(tokenKey),
+                    SecurityAlgorithms.HmacSha256Signature)
+            };
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var refreshToken = GenerateRefreshToken();
                 
-                return new Tokens 
-                { 
-                    AccessToken = tokenHandler.WriteToken(token), 
-                    RefreshToken = refreshToken 
-                };
-            }
-            catch (Exception ex)
+            return new UserTokensData
             {
-                return null;
-            }
+                AccessToken = tokenHandler.WriteToken(token),
+                RefreshToken = refreshToken
+            };
         }
 
         public ClaimsPrincipal GetPrincipalFromExpiredToken(string token)
@@ -79,7 +73,7 @@ namespace api.Domain.Services
             if (jwtSecurityToken == null || !jwtSecurityToken.Header.Alg.Equals(
                 SecurityAlgorithms.HmacSha256, StringComparison.InvariantCultureIgnoreCase))
             {
-                throw new SecurityTokenException("Invalid token");
+                throw new SecurityTokenException("Недопустимый токен");
             }
 
             return principal;
@@ -88,12 +82,10 @@ namespace api.Domain.Services
         public string GenerateRefreshToken()
         {
             var randomNumber = new byte[32];
-            using (var rng = RandomNumberGenerator.Create())
-            {
-                rng.GetBytes(randomNumber);
-                
-                return Convert.ToBase64String(randomNumber);
-            }
+            using var rng = RandomNumberGenerator.Create();
+            rng.GetBytes(randomNumber);
+
+            return Convert.ToBase64String(randomNumber);
         }
     }
 }

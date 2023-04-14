@@ -1,13 +1,13 @@
-﻿using api.Domain.Model.Poco;
-using System.Security.Claims;
+﻿using System.Security.Claims;
+using api.Domain.Command;
 
 namespace api.Domain.Interfaces
 {
     public interface IJWTManager
     {
-        Tokens GenerateToken(string userEmail);
+        UserTokensData GenerateToken(string userEmail);
 
-        Tokens GenerateRefreshToken(string userEmail);
+        UserTokensData GenerateRefreshToken(string userEmail);
 
         ClaimsPrincipal GetPrincipalFromExpiredToken(string token);
     }

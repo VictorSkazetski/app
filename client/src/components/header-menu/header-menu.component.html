@@ -1,0 +1,35 @@
+<div *ngIf="isUserLogin; then userHeader; else defaultHeader"></div>
+
+<ng-template #defaultHeader>
+  <section class="menu_container">
+    <div>
+      <h1>Привет</h1>
+      <ul>
+        <li><a href="/account/login" class="k-button">Вход</a></li>
+      </ul>
+    </div>
+  </section>
+</ng-template>
+
+<ng-template #userHeader>
+  <section class="header_menu_container">
+    <div class="menu_container">
+      <h1>Привет</h1>
+      <ul>
+        <li>
+          <a href="profile/profile-settings"
+            ><i class="far fa-user-circle"></i
+          ></a>
+        </li>
+        <li>
+          <a href="/sell-your-bike/bike" class="k-button"
+            >Разместить объявление</a
+          >
+        </li>
+      </ul>
+    </div>
+  </section>
+  <!-- <button appDebounceClick (debounceClick)="clickEvent()" [debounceTime]="700">
+    Click Me
+  </button>  Тест refresh JWT-->
+</ng-template>
