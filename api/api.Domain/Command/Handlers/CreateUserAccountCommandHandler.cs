@@ -4,6 +4,7 @@ using api.Domain.Model.Dto;
 using api.Error.Exceptions;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using System.Text;
 
 namespace api.Domain.Command
@@ -14,15 +15,18 @@ namespace api.Domain.Command
         private readonly IEmailService emailService;
         private readonly IApiUserManagerServices userManager;
         private readonly IMapper mapper;
+        private readonly IUsersActionsLogService usersActionsLogService;
 
         public CreateUserAccountCommandHandler(
             IEmailService emailService,
             IApiUserManagerServices userManager,
-            IMapper mapper)
+            IMapper mapper,
+            IUsersActionsLogService usersActionsLogService)
         {
             this.emailService = emailService;
             this.userManager = userManager;
             this.mapper = mapper;
+            this.usersActionsLogService = usersActionsLogService;
         }
 
         public async Task<AccountDto> Handle(
@@ -53,19 +57,14 @@ namespace api.Domain.Command
                         Encoding.UTF8.GetBytes(userCreated.Email));
                 await this.emailService.SendEmailAsync(confirmationlink);
 
+                this.usersActionsLogService.Log("Зарегистрировался", request.UserEmail);
+
                 return this.mapper.Map<AccountDto>(userCreated);
             }
             else
             {
                 return null;
             }
-            //var userCreated = await this.userRepository.CreateAsync(new UserEntity
-            //{
-            //    UserName = request.UserEmail,
-            //    Email = request.UserEmail,
-            //    NormalizedEmail = request.UserEmail,
-            //    PasswordHash = request.UserPassword,
-            //});
         }
     }
 }

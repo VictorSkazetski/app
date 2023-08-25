@@ -13,17 +13,20 @@ namespace api.Domain.Command.Handlers
         private readonly IUserProfileRepository userProfileRepository;
         private readonly ICrudBaseRepository<BikeAdEntity, int> bikeAdRepository;
         private readonly Func<Type, IUserUploadImg> userUloadImg;
+        private readonly IUsersActionsLogService usersActionsLogService;
 
         public DeleteBikeCommandHandler(
             IApiUserManagerServices userManager,
             IUserProfileRepository userProfileRepository,
             ICrudBaseRepository<BikeAdEntity, int> bikeAdRepository,
-            Func<Type, IUserUploadImg> userUloadImg)
+            Func<Type, IUserUploadImg> userUloadImg,
+            IUsersActionsLogService usersActionsLogService)
         {
             this.userManager = userManager;
             this.userProfileRepository = userProfileRepository;
             this.bikeAdRepository = bikeAdRepository;
             this.userUloadImg = userUloadImg;
+            this.usersActionsLogService = usersActionsLogService;
         }
 
         public async Task<bool> Handle(
@@ -31,6 +34,7 @@ namespace api.Domain.Command.Handlers
             CancellationToken cancellationToken)
         {
             var user = await this.userManager.GetCurrentUser();
+            this.usersActionsLogService.Log("Удалил объявление", user.Email);
             var userProfile = await this.userProfileRepository.GetUserProfileByUserId(user.Id);
             var bikes = await bikeAdRepository.GetAllAsync();
             var userBike = bikes.Where(x => x.Id == request.BikeAdId)

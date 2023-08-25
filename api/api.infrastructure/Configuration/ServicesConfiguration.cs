@@ -40,6 +40,8 @@ namespace api.Infrastructure.Configuration
             services.AddScoped<IApiUserManagerServices, ApiUserManagerServices>();
             services.AddScoped<IJWTManager, JWTManagerServices>();
             services.AddScoped<ExceptionMiddleware>();
+            services.AddScoped<UserActionsHistoryRepository>();
+            services.AddScoped<IUsersActionsLogService, UsersActionsLogService>();
 
             return services;
         }

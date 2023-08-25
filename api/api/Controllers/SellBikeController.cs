@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace api.Controllers
 {
     [ApiController]
+    [Authorize(Roles = "User")]
     public class SellBikeController : ControllerBase
     {
         private readonly IMediator Mediator;

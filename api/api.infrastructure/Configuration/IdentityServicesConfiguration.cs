@@ -24,6 +24,7 @@ namespace api.Infrastructure.Configuration
                 options.SignIn.RequireConfirmedEmail = true;
                 options.Tokens.EmailConfirmationTokenProvider = TokenOptions.DefaultEmailProvider;
             })
+            .AddRoles<IdentityRole>()
             .AddEntityFrameworkStores<ApiContext>()
             .AddDefaultTokenProviders();
             services.AddDataProtection();

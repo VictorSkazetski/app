@@ -53,7 +53,7 @@ export class AccountService {
 
   logout(refreshUserToken: string) {
     this.httpService
-      .post('logout', { "refreshToken": refreshUserToken }, false)
+      .post('logout', { refreshToken: refreshUserToken }, false)
       .pipe(
         catchError((error) => {
           return throwError(() => error);
@@ -65,5 +65,14 @@ export class AccountService {
           this.router.navigateByUrl('');
         }
       });
+  }
+
+  isUserAdmin(): boolean {
+    let tokens = this.localStorage.getTokens('tokens');
+    let jwtData = tokens.accessToken.split('.')[1];
+    let decodedJwtJsonData = window.atob(jwtData);
+    let decodedJwtData = JSON.parse(decodedJwtJsonData);
+
+    return decodedJwtData.role === 'Admin' ? true : false;
   }
 }

@@ -21,7 +21,8 @@ namespace api.Infrastructure.Configuration
                     sp => new CreateUserAccountCommandHandler(
                         sp.GetRequiredService<IEmailService>(),
                         sp.GetRequiredService<IApiUserManagerServices>(),
-                        sp.GetRequiredService<IMapper>()));
+                        sp.GetRequiredService<IMapper>(),
+                        sp.GetRequiredService<IUsersActionsLogService>()));
             services.AddScoped<
                 IRequestHandler<VerifyUserAccountEmailCommand, UserEmailVerifyDto>>(
                     sp => new VerifyUserAccountEmailCommandHandler(
@@ -33,7 +34,8 @@ namespace api.Infrastructure.Configuration
                         sp.GetRequiredService<IApiUserManagerServices>(),
                          sp.GetRequiredService<IMapper>(),
                          sp.GetRequiredService<IJWTManager>(),
-                         sp.GetRequiredService<IUserRefreshTokenRepository>()));
+                         sp.GetRequiredService<IUserRefreshTokenRepository>(),
+                         sp.GetRequiredService<IUsersActionsLogService>()));
             services.AddScoped<
                 IRequestHandler<RefreshUserTokensAccountCommand, UserTokensDto>>(
                     sp => new RefreshUserTokensAccountCommandHandler(
@@ -45,14 +47,16 @@ namespace api.Infrastructure.Configuration
                 IRequestHandler<LogoutUserAccountCommand>>(
                     sp => new LogoutUserAccountCommandHandler(
                         sp.GetRequiredService<IApiUserManagerServices>(),
-                        sp.GetRequiredService<IUserRefreshTokenRepository>()));
+                        sp.GetRequiredService<IUserRefreshTokenRepository>(),
+                        sp.GetRequiredService<IUsersActionsLogService>()));
             services.AddScoped<
                 IRequestHandler<UserProfileCommnand, UserProfileDto>>(
                     sp => new UserProfileCommnandHandler(
                         sp.GetRequiredService<IApiUserManagerServices>(),
                         sp.GetRequiredService<IMapper>(),
                         sp.GetRequiredService<IUserProfileRepository>(),
-                        sp.GetRequiredService<Func<Type, IUserUploadImg>>()));
+                        sp.GetRequiredService<Func<Type, IUserUploadImg>>(),
+                        sp.GetRequiredService<IUsersActionsLogService>()));
             services.AddScoped<
                 IRequestHandler<SellBikeCommand, SellBikeDto>>(
                     sp => new SellBikeCommandHandler(
@@ -60,14 +64,16 @@ namespace api.Infrastructure.Configuration
                         sp.GetRequiredService<IMapper>(),
                         sp.GetRequiredService<ICrudBaseRepository<BikeAdEntity, int>>(),
                         sp.GetRequiredService<IUserProfileRepository>(),
-                        sp.GetRequiredService<Func<Type, IUserUploadImg>>()));
+                        sp.GetRequiredService<Func<Type, IUserUploadImg>>(),
+                        sp.GetRequiredService<IUsersActionsLogService>()));
             services.AddScoped<
                 IRequestHandler<DeleteBikeCommand, bool>>(
                     sp => new DeleteBikeCommandHandler(
                         sp.GetRequiredService<IApiUserManagerServices>(),
                         sp.GetRequiredService<IUserProfileRepository>(),
                         sp.GetRequiredService<ICrudBaseRepository<BikeAdEntity, int>>(),
-                        sp.GetRequiredService<Func<Type, IUserUploadImg>>()));
+                        sp.GetRequiredService<Func<Type, IUserUploadImg>>(),
+                        sp.GetRequiredService<IUsersActionsLogService>()));
 
             return services;
         }

@@ -17,5 +17,9 @@
         public const string YourBikes = Your + "-" + Bikes;
         public const string DeleteYourBikes = YourBikes + "/" + BikeId;
         public const string BikeById = Bikes + "/" + Bike + "/" + BikeId;
+        public const string View = "View";
+        public const string Users = "Users";
+        public const string Actions = "Actions";
+        public const string AdminViewUsersAction = View + "/" + Users + "/" + Actions;
     }
 }

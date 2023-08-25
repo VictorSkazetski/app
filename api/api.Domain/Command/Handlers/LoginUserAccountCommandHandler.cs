@@ -15,17 +15,20 @@ namespace api.Domain.Command.Handlers
         private readonly IMapper mapper;
         private readonly IJWTManager jWTManager;
         private readonly IUserRefreshTokenRepository userRefreshTokenRepository;
+        private readonly IUsersActionsLogService usersActionsLogService;
 
         public LoginUserAccountCommandHandler(
             IApiUserManagerServices userManager,
             IMapper mapper,
             IJWTManager jWTManager,
-            IUserRefreshTokenRepository userRefreshTokenRepository)
+            IUserRefreshTokenRepository userRefreshTokenRepository,
+            IUsersActionsLogService usersActionsLogService)
         {
             this.userManager = userManager;
             this.mapper = mapper;
             this.jWTManager = jWTManager;
             this.userRefreshTokenRepository = userRefreshTokenRepository;
+            this.usersActionsLogService = usersActionsLogService;
         }
 
         public async Task<UserTokensDto> Handle(
@@ -48,15 +51,16 @@ namespace api.Domain.Command.Handlers
                 await this.userManager.CheckUserPasswordAsync(user, request.UserPassword);
             if (isUserPasswordValid)
             {
-                var tokens = this.jWTManager.GenerateToken(user.Email);
+                var tokens = await this.jWTManager.GenerateToken(user.Email);
                 await this.userRefreshTokenRepository.CreateAsync(
                     new UserRefreshTokensEntity
                     {
                         UserId = user.Id,
                         UserEmail = user.Email,
                         RefreshToken = tokens.RefreshToken,
-                        ExpiryTime = DateTime.Now.AddMinutes(3),
+                        ExpiryTime = DateTime.Now.AddMinutes(40),
                     });
+                this.usersActionsLogService.Log("Залогинился", user.Email);
 
                 return this.mapper.Map<UserTokensDto>(tokens);
             }

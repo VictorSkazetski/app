@@ -18,5 +18,7 @@ namespace api.Infrastructure.Data
         public virtual DbSet<UserProfileEntity> UserProfile { get; set; }
 
         public virtual DbSet<BikeAdEntity> BikeAd { get; set; }
+
+        public virtual DbSet<UserActionsHistoryEntity> UserActionsHistory { get; set; }
     }
 }

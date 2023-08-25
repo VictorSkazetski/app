@@ -20,5 +20,7 @@ namespace api.Domain.Interfaces
         string GetUserAccessTokenFromHttpContext();
 
         Task<UserEntity> GetCurrentUser();
+
+        Task<List<string>> GetUserRoles(string userEmail);
     }
 }

@@ -68,5 +68,11 @@ namespace api.Domain.Services
 
             return await FindByEmailAsync(userEmail);
         }
+
+        public async Task<List<string>> GetUserRoles(string userEmail)
+        {
+            return (await this.userManager.GetRolesAsync(await FindByEmailAsync(userEmail)))
+                .ToList();
+        }
     }
 }

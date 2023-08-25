@@ -15,17 +15,20 @@ namespace api.Domain.Command.Handlers
         private readonly IMapper mapper;
         private readonly IUserProfileRepository userProfileRepository;
         private readonly Func<Type, IUserUploadImg> userUloadImg;
+        private readonly IUsersActionsLogService usersActionsLogService;
 
         public UserProfileCommnandHandler(
             IApiUserManagerServices userManager,
             IMapper mapper,
             IUserProfileRepository userProfileRepository,
-            Func<Type, IUserUploadImg> userUloadImg)
+            Func<Type, IUserUploadImg> userUloadImg,
+            IUsersActionsLogService usersActionsLogService)
         {
             this.userManager = userManager;
             this.mapper = mapper;
             this.userUloadImg = userUloadImg;
             this.userProfileRepository = userProfileRepository;
+            this.usersActionsLogService = usersActionsLogService;
         }
 
         public async Task<UserProfileDto> Handle(
@@ -33,6 +36,7 @@ namespace api.Domain.Command.Handlers
             CancellationToken cancellationToken)
         {
             var user = await this.userManager.GetCurrentUser();
+            this.usersActionsLogService.Log("Настроил профиль", user.Email);
             var userProfile = await this.userProfileRepository.GetUserProfileByUserId(user.Id);
             UserProfileEntity userProfileCreated;
             string? userImgUploadPath = null;

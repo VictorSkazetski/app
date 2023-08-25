@@ -7,6 +7,7 @@ using api.Domain.Interfaces;
 using MapsterMapper;
 using api.Infrastructure.Data.Repositories.Interfaces;
 using api.Data;
+using api.Infrastructure.Data.Repositories;
 
 namespace api.Infrastructure.Configuration
 {
@@ -39,6 +40,11 @@ namespace api.Infrastructure.Configuration
                         sp.GetRequiredService<ICrudBaseRepository<BikeAdEntity, int>>(),
                         sp.GetRequiredService<IMapper>(),
                         sp.GetRequiredService<IUserProfileRepository>()));
+            services.AddScoped<
+                IRequestHandler<ViewUsersActionsQuery, UsersActionsDto>>(
+                    sp => new ViewUsersActionsQueryHandler(
+                        sp.GetRequiredService<IMapper>(),
+                        sp.GetRequiredService<UserActionsHistoryRepository>()));
 
             return services;
         }

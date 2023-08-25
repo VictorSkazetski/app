@@ -53,6 +53,11 @@ namespace api.Infrastructure.Configuration
                 .Map(x => x.Phone, x => x.Item2.Phone)
                 .Map(x => x.UserAvatarImg, x => x.Item2.UserImgPath)
                 .Map(x => x.UserAvatarPickImg, x => x.Item2.PickImgNum);
+            config
+                .NewConfig<UserActionsHistoryEntity, UserActionDto>()
+                .Map(x => x.Action, x => x.Action)
+                .Map(x => x.UserEmail, x => x.UserEmail)
+                .Map(x => x.DateTime, x => x.DateTime);
         }
     }
 }
