@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdminComponent } from 'src/components/admin/admin.component';
 import { AllBikeAdsComponent } from 'src/components/all-bike-ads/all-bike-ads.component';
 import { BikeAdComponent } from 'src/components/bike-ad/bike-ad.component';
 import { HomeComponent } from 'src/components/home/home.component';
@@ -28,6 +29,10 @@ const routes: Routes = [
   {
     path: 'bikes/bike/:id',
     component: BikeAdComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
   },
   {
     path: '',

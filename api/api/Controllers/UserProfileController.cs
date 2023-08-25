@@ -1,13 +1,16 @@
-﻿using api.App;
+﻿using System.Data;
+using api.App;
 using api.Domain.Command;
 using api.Domain.Model.Dto;
 using api.Domain.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
 {
     [ApiController]
+    [Authorize(Roles = "User")]
     public class UserProfileController : ControllerBase
     {
         private readonly IMediator Mediator;

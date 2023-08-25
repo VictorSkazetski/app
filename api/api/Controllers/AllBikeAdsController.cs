@@ -1,11 +1,15 @@
-﻿using api.App;
+﻿using System.Data;
+using api.App;
 using api.Domain.Model.Dto;
 using api.Domain.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
 {
+    [ApiController]
+    [Authorize(Roles = "User")]
     public class AllBikeAdsController : ControllerBase
     {
         private readonly IMediator Mediator;

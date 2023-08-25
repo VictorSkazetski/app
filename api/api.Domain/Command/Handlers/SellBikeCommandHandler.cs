@@ -17,20 +17,22 @@ namespace api.Domain.Command.Handlers
         private readonly ICrudBaseRepository<BikeAdEntity, int> bikeAdRepository;
         private readonly IUserProfileRepository userProfileRepository;
         private readonly Func<Type, IUserUploadImg> uploadBikeImg;
-
+        private readonly IUsersActionsLogService usersActionsLogService;
 
         public SellBikeCommandHandler(
             IApiUserManagerServices userManager,
             IMapper mapper,
             ICrudBaseRepository<BikeAdEntity, int> bikeAdRepository,
             IUserProfileRepository userProfileRepository,
-            Func<Type, IUserUploadImg> uploadBikeImg)
+            Func<Type, IUserUploadImg> uploadBikeImg,
+            IUsersActionsLogService usersActionsLogService)
         {
             this.userManager = userManager;
             this.mapper = mapper;
             this.bikeAdRepository = bikeAdRepository;
             this.userProfileRepository = userProfileRepository;
             this.uploadBikeImg = uploadBikeImg;
+            this.usersActionsLogService = usersActionsLogService;
         }
 
         public async Task<SellBikeDto> Handle(
@@ -38,6 +40,7 @@ namespace api.Domain.Command.Handlers
             CancellationToken cancellationToken)
         {
             var user = await this.userManager.GetCurrentUser();
+            this.usersActionsLogService.Log("Разместил объявление", user.Email);
             var imgPath = await this.uploadBikeImg(typeof(UserUploadBikeImgServices)).StoreUploadedImg(
                 request.BikeData.UploadImg, user.Id);
             var userProfile = await this.userProfileRepository.GetUserProfileByUserId(user.Id);

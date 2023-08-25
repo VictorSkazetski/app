@@ -1,28 +1,31 @@
 {
   "format": 1,
   "restore": {
-    "D:\\app\\api\\api\\api.csproj": {}
+    "D:\\APP_BELAZ\\api\\api\\api.csproj": {}
   },
   "projects": {
-    "D:\\app\\api\\api.Data\\api.Data.csproj": {
+    "D:\\APP_BELAZ\\api\\api.Data\\api.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\app\\api\\api.Data\\api.Data.csproj",
+        "projectUniqueName": "D:\\APP_BELAZ\\api\\api.Data\\api.Data.csproj",
         "projectName": "api.Data",
-        "projectPath": "D:\\app\\api\\api.Data\\api.Data.csproj",
-        "packagesPath": "C:\\Users\\v.skazetsky\\.nuget\\packages\\",
-        "outputPath": "D:\\app\\api\\api.Data\\obj\\",
+        "projectPath": "D:\\APP_BELAZ\\api\\api.Data\\api.Data.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "D:\\APP_BELAZ\\api\\api.Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\v.skazetsky\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WPF.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "http://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -51,7 +54,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -60,39 +64,42 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\app\\api\\api.Domain\\api.Domain.csproj": {
+    "D:\\APP_BELAZ\\api\\api.Domain\\api.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\app\\api\\api.Domain\\api.Domain.csproj",
+        "projectUniqueName": "D:\\APP_BELAZ\\api\\api.Domain\\api.Domain.csproj",
         "projectName": "api.Domain",
-        "projectPath": "D:\\app\\api\\api.Domain\\api.Domain.csproj",
-        "packagesPath": "C:\\Users\\v.skazetsky\\.nuget\\packages\\",
-        "outputPath": "D:\\app\\api\\api.Domain\\obj\\",
+        "projectPath": "D:\\APP_BELAZ\\api\\api.Domain\\api.Domain.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "D:\\APP_BELAZ\\api\\api.Domain\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\v.skazetsky\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WPF.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "http://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\app\\api\\api.Exception\\api.Error.csproj": {
-                "projectPath": "D:\\app\\api\\api.Exception\\api.Error.csproj"
+              "D:\\APP_BELAZ\\api\\api.Exception\\api.Error.csproj": {
+                "projectPath": "D:\\APP_BELAZ\\api\\api.Exception\\api.Error.csproj"
               },
-              "D:\\app\\api\\api.Infrastructure.Data\\api.Infrastructure.Data.csproj": {
-                "projectPath": "D:\\app\\api\\api.Infrastructure.Data\\api.Infrastructure.Data.csproj"
+              "D:\\APP_BELAZ\\api\\api.Infrastructure.Data\\api.Infrastructure.Data.csproj": {
+                "projectPath": "D:\\APP_BELAZ\\api\\api.Infrastructure.Data\\api.Infrastructure.Data.csproj"
               }
             }
           }
@@ -134,7 +141,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -146,29 +154,32 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\app\\api\\api.Exception\\api.Error.csproj": {
+    "D:\\APP_BELAZ\\api\\api.Exception\\api.Error.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\app\\api\\api.Exception\\api.Error.csproj",
+        "projectUniqueName": "D:\\APP_BELAZ\\api\\api.Exception\\api.Error.csproj",
         "projectName": "api.Error",
-        "projectPath": "D:\\app\\api\\api.Exception\\api.Error.csproj",
-        "packagesPath": "C:\\Users\\v.skazetsky\\.nuget\\packages\\",
-        "outputPath": "D:\\app\\api\\api.Exception\\obj\\",
+        "projectPath": "D:\\APP_BELAZ\\api\\api.Exception\\api.Error.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "D:\\APP_BELAZ\\api\\api.Exception\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\v.skazetsky\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WPF.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "http://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
@@ -201,7 +212,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -210,36 +222,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\app\\api\\api.Infrastructure.Data\\api.Infrastructure.Data.csproj": {
+    "D:\\APP_BELAZ\\api\\api.Infrastructure.Data\\api.Infrastructure.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\app\\api\\api.Infrastructure.Data\\api.Infrastructure.Data.csproj",
+        "projectUniqueName": "D:\\APP_BELAZ\\api\\api.Infrastructure.Data\\api.Infrastructure.Data.csproj",
         "projectName": "api.Infrastructure.Data",
-        "projectPath": "D:\\app\\api\\api.Infrastructure.Data\\api.Infrastructure.Data.csproj",
-        "packagesPath": "C:\\Users\\v.skazetsky\\.nuget\\packages\\",
-        "outputPath": "D:\\app\\api\\api.Infrastructure.Data\\obj\\",
+        "projectPath": "D:\\APP_BELAZ\\api\\api.Infrastructure.Data\\api.Infrastructure.Data.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "D:\\APP_BELAZ\\api\\api.Infrastructure.Data\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\v.skazetsky\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WPF.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "http://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\app\\api\\api.Data\\api.Data.csproj": {
-                "projectPath": "D:\\app\\api\\api.Data\\api.Data.csproj"
+              "D:\\APP_BELAZ\\api\\api.Data\\api.Data.csproj": {
+                "projectPath": "D:\\APP_BELAZ\\api\\api.Data\\api.Data.csproj"
               }
             }
           }
@@ -291,7 +306,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -300,36 +316,39 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\app\\api\\api.infrastructure\\api.Infrastructure.csproj": {
+    "D:\\APP_BELAZ\\api\\api.infrastructure\\api.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\app\\api\\api.infrastructure\\api.Infrastructure.csproj",
+        "projectUniqueName": "D:\\APP_BELAZ\\api\\api.infrastructure\\api.Infrastructure.csproj",
         "projectName": "api.Infrastructure",
-        "projectPath": "D:\\app\\api\\api.infrastructure\\api.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\v.skazetsky\\.nuget\\packages\\",
-        "outputPath": "D:\\app\\api\\api.infrastructure\\obj\\",
+        "projectPath": "D:\\APP_BELAZ\\api\\api.infrastructure\\api.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "D:\\APP_BELAZ\\api\\api.infrastructure\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\v.skazetsky\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WPF.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "http://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\app\\api\\api.Domain\\api.Domain.csproj": {
-                "projectPath": "D:\\app\\api\\api.Domain\\api.Domain.csproj"
+              "D:\\APP_BELAZ\\api\\api.Domain\\api.Domain.csproj": {
+                "projectPath": "D:\\APP_BELAZ\\api\\api.Domain\\api.Domain.csproj"
               }
             }
           }
@@ -379,7 +398,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -388,45 +408,49 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "D:\\app\\api\\api\\api.csproj": {
+    "D:\\APP_BELAZ\\api\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\app\\api\\api\\api.csproj",
+        "projectUniqueName": "D:\\APP_BELAZ\\api\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "D:\\app\\api\\api\\api.csproj",
-        "packagesPath": "C:\\Users\\v.skazetsky\\.nuget\\packages\\",
-        "outputPath": "D:\\app\\api\\api\\obj\\",
+        "projectPath": "D:\\APP_BELAZ\\api\\api\\api.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "D:\\APP_BELAZ\\api\\api\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Progress\\ToolboxNuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\v.skazetsky\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Telerik UI for WPF.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
+          "http://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "D:\\app\\api\\api.Domain\\api.Domain.csproj": {
-                "projectPath": "D:\\app\\api\\api.Domain\\api.Domain.csproj"
+              "D:\\APP_BELAZ\\api\\api.Domain\\api.Domain.csproj": {
+                "projectPath": "D:\\APP_BELAZ\\api\\api.Domain\\api.Domain.csproj"
               },
-              "D:\\app\\api\\api.Exception\\api.Error.csproj": {
-                "projectPath": "D:\\app\\api\\api.Exception\\api.Error.csproj"
+              "D:\\APP_BELAZ\\api\\api.Exception\\api.Error.csproj": {
+                "projectPath": "D:\\APP_BELAZ\\api\\api.Exception\\api.Error.csproj"
               },
-              "D:\\app\\api\\api.Infrastructure.Data\\api.Infrastructure.Data.csproj": {
-                "projectPath": "D:\\app\\api\\api.Infrastructure.Data\\api.Infrastructure.Data.csproj"
+              "D:\\APP_BELAZ\\api\\api.Infrastructure.Data\\api.Infrastructure.Data.csproj": {
+                "projectPath": "D:\\APP_BELAZ\\api\\api.Infrastructure.Data\\api.Infrastructure.Data.csproj"
               },
-              "D:\\app\\api\\api.infrastructure\\api.Infrastructure.csproj": {
-                "projectPath": "D:\\app\\api\\api.infrastructure\\api.Infrastructure.csproj"
+              "D:\\APP_BELAZ\\api\\api.infrastructure\\api.Infrastructure.csproj": {
+                "projectPath": "D:\\APP_BELAZ\\api\\api.infrastructure\\api.Infrastructure.csproj"
               }
             }
           }
@@ -466,7 +490,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -478,7 +503,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -39,7 +39,7 @@ namespace api.Domain.Command.Handlers
             var user = await this.userManager.FindByEmailAsync(userEmail);
             var savedToken = await this.userRefreshTokenRepository.GetUserRefreshTokenByUserId(
                     user.Id);
-            var newJwtToken = this.jWTManager.GenerateRefreshToken(userEmail);
+            var newJwtToken = await this.jWTManager.GenerateRefreshToken(userEmail);
             if (savedToken.RefreshToken != request.userTokens.RefreshToken ||
                 savedToken.ExpiryTime <= DateTime.Now ||
                 newJwtToken == null)

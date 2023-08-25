@@ -3,11 +3,13 @@ using api.Domain.Command;
 using api.Domain.Model.Dto;
 using api.Domain.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace api.Controllers
 {
     [ApiController]
+    [Authorize(Roles = "User")]
     public class YourBikesController : ControllerBase
     {
         private readonly IMediator Mediator;

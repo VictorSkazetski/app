@@ -9,13 +9,16 @@ namespace api.Domain.Command.Handlers
     {
         private readonly IApiUserManagerServices userManager;
         private readonly IUserRefreshTokenRepository userRefreshTokenRepository;
+        private readonly IUsersActionsLogService usersActionsLogService;
 
         public LogoutUserAccountCommandHandler(
             IApiUserManagerServices userManager,
-            IUserRefreshTokenRepository userRefreshTokenRepository)
+            IUserRefreshTokenRepository userRefreshTokenRepository,
+            IUsersActionsLogService usersActionsLogService)
         {
             this.userManager = userManager;
             this.userRefreshTokenRepository = userRefreshTokenRepository;
+            this.usersActionsLogService = usersActionsLogService;
         }
 
         public async Task Handle(
@@ -23,6 +26,7 @@ namespace api.Domain.Command.Handlers
             CancellationToken cancellationToken)
         {
             var user = await this.userManager.GetCurrentUser();
+            this.usersActionsLogService.Log("Разлогинился", user.Email);
             await this.userRefreshTokenRepository.DropUserRefreshToken(
                 user.Id, request.userTokens.RefreshToken);
         }

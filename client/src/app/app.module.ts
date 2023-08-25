@@ -14,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { BikeAdComponent } from 'src/components/bike-ad/bike-ad.component';
+import { AdminComponent } from 'src/components/admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { BikeAdComponent } from 'src/components/bike-ad/bike-ad.component';
     AllBikeAdsComponent,
     DebounceClickDirective,
     BikeAdComponent,
+    AdminComponent,
   ],
   imports: [
     AppRoutingModule,

@@ -12,38 +12,48 @@ namespace api.Domain.Services
     public class JWTManagerServices : IJWTManager
     {
         private readonly IConfiguration iconfiguration;
+        private readonly IApiUserManagerServices userManager;
 
         public JWTManagerServices(
-            IConfiguration iconfiguration)
+            IConfiguration iconfiguration, 
+            IApiUserManagerServices userManager)
         {
             this.iconfiguration = iconfiguration;
+            this.userManager = userManager;
         }
 
-        public UserTokensData GenerateRefreshToken(string userEmail)
+        public async Task<UserTokensData> GenerateRefreshToken(string userEmail)
         {
-            return GenerateJWTTokens(userEmail);
+            return await GenerateJWTTokens(userEmail);
         }
 
-        public UserTokensData GenerateToken(string userEmail)
+        public async Task<UserTokensData> GenerateToken(string userEmail)
         {
-            return GenerateJWTTokens(userEmail);
+            return await GenerateJWTTokens(userEmail);
         }
 
-        public UserTokensData GenerateJWTTokens(string userEmail)
+        public async Task<UserTokensData> GenerateJWTTokens(string userEmail)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.UTF8.GetBytes(iconfiguration["JWT:Key"]);
+            var roles = await this.userManager.GetUserRoles(userEmail);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                Subject = new ClaimsIdentity(new Claim[] 
-                {
-                    new Claim(ClaimTypes.Email, userEmail)
-                }),
-                Expires = DateTime.Now.AddMinutes(2),
+                Expires = DateTime.Now.AddMinutes(30),
                 SigningCredentials = new SigningCredentials(
                     new SymmetricSecurityKey(tokenKey),
                     SecurityAlgorithms.HmacSha256Signature)
             };
+            var claims = new List<Claim> 
+            { 
+                new Claim(ClaimTypes.Email, userEmail),
+            };
+            foreach (var role in roles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
+
+            tokenDescriptor.Subject = new ClaimsIdentity(claims);
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var refreshToken = GenerateRefreshToken();
                 
